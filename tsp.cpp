@@ -38,5 +38,6 @@ int main()
     {
         cout << "!!! PROBLEM !!!" << endl;
     }
+    cout << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs " << endl; 
     return 0;
 }

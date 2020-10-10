@@ -58,7 +58,7 @@ int AStar::calculateHeuristic(FringeListNode curr)
         MSTToStart = min(MSTToStart, dist[node][startNode]);
     }
     cout << "\t\theuristic calcuated => curr_to_MST=" << currToMST << ", MST=" << MSTCost << ", MST_to_Start=" << MSTToStart << ", Total=" << currToMST + MSTCost + MSTToStart << endl;
-    return currToMST + MSTCost + MSTToStart;
+    return  currToMST + MSTCost + MSTToStart ;
 }
 
 bool AStar::solve()
