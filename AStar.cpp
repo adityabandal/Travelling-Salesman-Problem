@@ -6,6 +6,18 @@ AStar::AStar(Graph g, int startNode)
     this->startNode = startNode;
     this->numOfNodes = g.v;
     solution = FringeListNode();
+    cost = 0;
+}
+
+void AStar::calculateCost()
+{
+    vector<int> path = solution.path;
+    int n = path.size();
+    for (int i = 1; i < path.size(); i++)
+    {
+        cost += dist[path[i - 1]][path[i]];
+    }
+    cost += dist[path[n - 1]][startNode];
 }
 
 vector<int> AStar::getAdjacentNodes(FringeListNode curr)
@@ -58,7 +70,7 @@ int AStar::calculateHeuristic(FringeListNode curr)
         MSTToStart = min(MSTToStart, dist[node][startNode]);
     }
     cout << "\t\theuristic calcuated => curr_to_MST=" << currToMST << ", MST=" << MSTCost << ", MST_to_Start=" << MSTToStart << ", Total=" << currToMST + MSTCost + MSTToStart << endl;
-    return  currToMST + MSTCost + MSTToStart ;
+    return currToMST + MSTCost + MSTToStart;
 }
 
 bool AStar::solve()
@@ -81,6 +93,7 @@ bool AStar::solve()
         {
             solution = curr;
             solution.path.push_back(curr.nodeId);
+            calculateCost();
             cout << "GOAL FOUND!!" << endl;
             return true;
         }
