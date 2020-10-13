@@ -1,1 +1,0 @@
-g++ tsp.cpp Graph.cpp FringeListNode.cpp AStar.cpp 
